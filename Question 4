@@ -1,0 +1,42 @@
+"""
+Question 4 
+"""
+
+from collections import Counter
+from datetime import datetime
+
+
+def find_peak_usage(logs: list[str]) -> int:
+    if not logs:
+        raise ValueError("logs cannot be empty.")
+
+    hour_counts: Counter[int] = Counter(
+        datetime.fromisoformat(timestamp).hour for timestamp in logs
+    )
+
+    max_count = max(hour_counts.values())
+
+    for hour in range(24):
+        if hour_counts.get(hour, 0) == max_count:
+            return hour
+
+    raise RuntimeError("Failed to determine peak hour.")
+
+
+def main() -> None:
+    sample_logs = [
+        "2026-08-04T13:21:18",
+        "2026-08-04T13:45:02",
+        "2026-08-04T09:05:11",
+        "2026-08-04T13:59:59",
+        "2026-08-04T09:30:00",
+        "2026-08-04T22:00:00",
+    ]
+
+    peak_hour = find_peak_usage(sample_logs)
+    print(f"Sample logs: {sample_logs}")
+    print(f"Peak usage hour: {peak_hour}:00")
+
+
+if __name__ == "__main__":
+    main()
