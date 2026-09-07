@@ -1,0 +1,28 @@
+"""
+Question 1.
+"""
+
+
+def get_valid_age() -> int:
+    while True:
+        user_input = input("Please enter your age: ")
+        try:
+            age = int(user_input)
+        except ValueError:
+            print(f"'{user_input}' is not a valid integer. Please try again.")
+            continue
+
+        if age < 0:
+            print("Age cannot be negative. Please try again.")
+            continue
+
+        return age
+
+
+def main() -> None:
+    age = get_valid_age()
+    print(f"Your age is: {age}")
+
+
+if __name__ == "__main__":
+    main()
