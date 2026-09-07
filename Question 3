@@ -1,0 +1,38 @@
+"""
+question 3
+"""
+
+STUDENT_MARKS = {
+    "Alice": 78,
+    "Brian": 85,
+    "Chipo": 92,
+    "David": 67,
+    "Ester": 88,
+}
+
+
+def display_students(students: dict[str, int]) -> None:
+    print("Student Marks:")
+    for name, mark in students.items():
+        print(f"  {name}: {mark}")
+
+
+def find_top_student(students: dict[str, int]) -> tuple[str, int]:
+    if not students:
+        raise ValueError("The students dictionary is empty.")
+
+    top_name = max(students, key=students.get)
+    return top_name, students[top_name]
+
+
+def main() -> None:
+    display_students(STUDENT_MARKS)
+
+    top_name, top_mark = find_top_student(STUDENT_MARKS)
+    print(f"\nTop student: {top_name} with a mark of {top_mark}")
+
+
+if __name__ == "__main__":
+   main()
+
+    main()
