@@ -1,0 +1,29 @@
+"""
+#Questioin 3 (2)
+"""
+
+
+class Book:
+    def __init__(self, title: str, author: str, price: float) -> None:
+        self.title = title
+        self.author = author
+        self.price = price
+
+    def display_details(self) -> None:
+        print(f"Title:  {self.title}")
+        print(f"Author: {self.author}")
+        print(f"Price:  ${self.price:.2f}")
+
+
+def main() -> None:
+    book1 = Book("Clean Code", "Robert C. Martin", 34.99)
+    book2 = Book("The Pragmatic Programmer", "David Thomas & Andrew Hunt", 39.99)
+
+    for index, book in enumerate((book1, book2), start=1):
+        print(f"Book {index}:")
+        book.display_details()
+        print()
+
+
+if __name__ == "__main__":
+    main()
